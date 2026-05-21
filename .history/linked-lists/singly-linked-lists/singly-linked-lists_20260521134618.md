@@ -15,9 +15,7 @@
 9. [Interview Problems](#interview-problems)
 
 ## General Overview
-
 [⬆️ Back to Top](#singly-linked-lists)
-
   ```
    HEAD
     |
@@ -31,8 +29,6 @@
 
 ## Node Class
 
-[⬆️ Back to Top](#singly-linked-lists)
-
 ```javascript
 class Node {
   constructor(value) {
@@ -43,8 +39,6 @@ class Node {
 ```
 
 ## Linked List Class Constructor
-
-[⬆️ Back to Top](#singly-linked-lists)
 
 ```javascript
 class LinkedList {
@@ -57,8 +51,6 @@ class LinkedList {
 ```
 
 ## Common Operations
-
-[⬆️ Back to Top](#singly-linked-lists)
 
 | Operation          | Time   | Space  | Details                                  |
 |--------------------|--------|--------|------------------------------------------|
@@ -74,8 +66,6 @@ class LinkedList {
 | Reverse            | `O(n)` | `O(1)` | [Link](operations/reverse.md)            |
 
 ## Full Implementation
-
-[⬆️ Back to Top](#singly-linked-lists)
 
 ```jsx
 class Node {
@@ -318,8 +308,6 @@ class LinkedList {
 
 ## Real World Applications
 
-[⬆️ Back to Top](#singly-linked-lists)
-
 - Undo/redo functionality
 - Browser history
 - Music playlists
@@ -329,16 +317,12 @@ class LinkedList {
 
 ## Advantages
 
-[⬆️ Back to Top](#singly-linked-lists)
-
 - Dynamic size
 - `O(1)` insertion and deletion at the head
 - Efficient insertions and deletions in general
 - No memory waste from pre-allocation
 
 ## Disadvantages
-
-[⬆️ Back to Top](#singly-linked-lists)
 
 - No random access - `O(n)` lookup
 - Memory overhead per node
@@ -347,8 +331,6 @@ class LinkedList {
 - No `O(1)` tail deletion
 
 ## Interview Problems
-
-[⬆️ Back to Top](#singly-linked-lists)
 
 - [Find Middle Node](interview-problems/find-middle-node.md)
 - [Detect Cycle (Floyd's Tortoise and Hare)](interview-problems/detect-cycle.md)

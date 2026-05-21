@@ -1,0 +1,54 @@
+# SLL Interview Problems: Detect Cycle (Floyd's Tortoise and Hare)
+
+Given a singly linked list, determine whether it contains a cycle. A cycle occurs when a node’s `next` pointer points back to a previous node in the list, forming a loop.
+
+## Approach
+
+- Same fast/slow pointer technique, but applied differently.
+- If there is a cycle, the fast pointer will eventually lap the slow pointer and they will meet inside the cycle.
+- If there is no cycle, the fast pointer will reach the end of the list (`null`) and they will never meet.
+
+**Why they’re guaranteed to meet:** Once `fast` enters the cycle, it gains one step on `slow` every iteration. No matter how large the cycle is, `fast` will close the gap by one step at a time and eventually land on `slow`; it’s mathematically guaranteed. And they will always meet within at most `cycle length` iterations after `fast` enters the cycle.
+
+## High-level Algorithm
+
+1. If the list is empty or has one node, return `false` - no cycle possible.
+2. Initialize `slow` and `fast` pointers to `head`.
+3. While `fast` is not `null` AND `fast.next` is not `null`:
+    1. Move `slow` one step forward
+    2. Move `fast` two steps forward
+    3. If `slow === fast`, a cycle has been detected - return `true`.
+4. If the loop exits naturally, fast hit `null` - no cycle - return `false`.
+
+## Implementation
+
+```jsx
+function detectCycle(head) {
+	// If empty list or one node, return false.
+	if(!head || !head.next) {
+		return false;
+	}
+	
+    // Initialize both pointers to head
+	let slow = head;
+	let fast = head;
+	
+    // Traverse the list - for every step slow takes, fast takes two.
+	while (fast !== null && fast.next !== null) {
+		slow = slow.next;
+		fast = fast.next.next;
+		
+        // A cycle has been detected.
+		if(slow === fast) return true;
+	}
+	
+    // No cycle detected.
+	return false;
+}
+```
+- Tme complexity: `O(n)`
+- Space complexity: `O(1)`
+
+---
+
+⬅️ [Back to Singly Linked Lists](../singly-linked-lists.md)

@@ -1,0 +1,75 @@
+# Singly Linked List: Delete Tail
+
+## Approach
+
+- Deleting the tail means removing the last node from the list and making the second-to-last node the new tail.
+- Although we have a direct `tail` reference, we cannot simply remove the tail and update `tail` in `O(1)` because after removing the last node, we need to update `tail` to point to the second-to-last node, but nodes have no `previous` pointer, so there’s no way to find the second-to-last node without traversing the entire list from the head.
+- This is an important contrast between singly and doubly linked lists: In a doubly linked list, this operation is `O(1)` because every node knows its predecessor; in a singly linked list, it’s `O(n)`.
+- Edge cases:
+    1. If the list is empty, there’s nothing to delete.
+    2. If the last has only one node, both `head` and `tail` must be set to `null`.
+
+## High-level Algorithm
+
+1. If the list is empty, return null - nothing to delete.
+2. If the list has only one node, empty the list entirely:
+    1. Store its value.
+    2. Set both head and tail to null.
+    3. Decrement length.
+    4. Return the value.
+3. Traverse the list to find the second-to-last node (the predecessor of tail).
+4. Store the current tail’s value.
+5. Set the predecessor’s `next` to `null`.
+    - It is now the new tail.
+6. Update `tail` to the predecessor node.
+7. Decrement length by 1.
+8. Return the deleted node’s value.
+
+## Implementation
+
+```jsx
+deleteTail() {
+	// If the list is empty, return null
+	if(!this.head) {
+		return null;
+	}
+	
+	// If there's only one node, empty the list entirely
+	if(this.head === this.tail) {
+		const deletedValue = this.head.value;
+		this.head = null;
+		this.tail = null;
+		this.length--;
+		return deletedValue;
+	}
+	
+	// Traverse to find the second-to-last node (predecessor of tail)
+	let current = this.head;
+	
+	while(current.next !== this.tail) {
+		current = current.next;
+	}
+	// current is now the second-to-last node
+	
+	// Store the tail's value before we remove it.
+	const deletedValue = this.tail.value;
+	
+	// Set the predecessor's next to null
+	current.next = null;
+	
+	// Update tail to the predecessor node
+	this.tail = current;
+	
+	// Decrement length
+	this.length--;
+	
+	// Return deleted value
+	return deletedValue;
+}
+```
+- Time complexity: `O(n)`
+- Space complexity: `O(1)`
+
+---
+
+⬅️ [Back to Singly Linked Lists](../singly-linked-lists.md)
